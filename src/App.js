@@ -1,11 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
+import GlobalStyle from './styles/global'
 
-function App() {
-  return (
-    <div>
-      
-    </div>
-  );
+import RoutesApp from "./routes";
+
+export default class App extends Component {
+  render(){
+    return (
+      <div className="app">
+        <RoutesApp/>
+
+        <GlobalStyle/>
+      </div>
+    );
+  }
 }
-
-export default App;
