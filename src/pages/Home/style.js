@@ -3,11 +3,15 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
 
+    .now-playing {
+        padding: 30px 30px 0px 30px;
+    }
+
     .movies-list {
         display: flex;
         gap: 20px;
         overflow: auto;
-        padding: 30px;
+        padding-top: 10px;
 
         ::-webkit-scrollbar {
             background-color: transparent;
@@ -18,7 +22,7 @@ export const Container = styled.div`
             border-radius: 10px;
         }
         
-        div {
+        a {
             img {
                 width: 160px;
                 height: 250px;
@@ -27,6 +31,13 @@ export const Container = styled.div`
             }
             img:hover {
                 transform: scale(1.02);
+            }
+
+            h5 {
+                color: #000;
+            }
+            h5:hover {
+                color: #0f79af;
             }
         }
     }

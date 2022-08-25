@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 import {Container} from './style';
 
 export default class Featured extends Component {
@@ -18,9 +19,7 @@ export default class Featured extends Component {
                         <div className="featured--description">
                             <p>{this.props.item.overview}</p>
                         </div>
-                        <div className="featured--button">
-                            <button>Saiba mais</button>
-                        </div>
+                        <Link to={`/details/${this.props.item.id}`}>Saiba mais</Link>
                         <input type="text" placeholder="Buscar por Filmes e Séries..."/>
                     </div>
                 </div>

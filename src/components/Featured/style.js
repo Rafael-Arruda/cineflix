@@ -41,17 +41,18 @@ export const Container = styled.div`
                 line-height: 20px;
             }
         }
-        .featured--button {
-            button {
-                border: 0;
-                border-radius: 2px;
-                font-size: 1em;
-                font-weight: 400;
-                padding: 10px 25px;
-                color: #fff;
-                background-color: #0f79af;
-                cursor: pointer;
-            }
+        
+        a {
+            width: 140px;
+            text-align: center;
+            border: 0;
+            border-radius: 2px;
+            font-size: 1em;
+            font-weight: 400;
+            padding: 10px 25px;
+            color: #fff;
+            background-color: #0f79af;
+            cursor: pointer;
         }
 
         input {

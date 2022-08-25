@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Filmes from './pages/Filmes';
 import Series from './pages/Series';
 import Favoritos from './pages/Favoritos';
+import Details from './pages/Details';
 
 export default class RoutesApp extends Component{
     render(){
@@ -21,6 +22,7 @@ export default class RoutesApp extends Component{
                     <Route path='/filmes' element={<Filmes/>}/>
                     <Route path='/series' element={<Series/>}/>
                     <Route path='/favoritos' element={<Favoritos/>}/>
+                    <Route path='/details/:id' element={<Details/>}/>
                 </Routes>
             </BrowserRouter>
         )
