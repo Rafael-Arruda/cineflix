@@ -23,6 +23,10 @@ export const Container = styled.div`
                 width: 160px;
                 height: 250px;
                 border-radius: 10px;
+                transition: 0.3s all;
+            }
+            img:hover {
+                transform: scale(1.02);
             }
         }
     }
