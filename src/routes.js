@@ -5,9 +5,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 
 import Home from './pages/Home';
-import Filmes from './pages/Filmes';
+import Movies from './pages/Movies';
 import Series from './pages/Series';
-import Favoritos from './pages/Favoritos';
+import Favorites from './pages/Favorites';
 import Details from './pages/Details';
 
 export default class RoutesApp extends Component{
@@ -19,9 +19,9 @@ export default class RoutesApp extends Component{
                 
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/filmes' element={<Filmes/>}/>
+                    <Route path='/movies' element={<Movies/>}/>
                     <Route path='/series' element={<Series/>}/>
-                    <Route path='/favoritos' element={<Favoritos/>}/>
+                    <Route path='/favorites' element={<Favorites/>}/>
                     <Route path='/details/:id' element={<Details/>}/>
                 </Routes>
             </BrowserRouter>

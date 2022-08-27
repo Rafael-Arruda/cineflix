@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 100%;
 
     .now-playing {
-        padding: 30px 30px 0px 30px;
+        padding: 30px 30px 30px 30px;
     }
 
     .movies-list {
@@ -12,7 +12,7 @@ export const Container = styled.div`
         gap: 20px;
         overflow: auto;
         padding-top: 10px;
-
+        
         ::-webkit-scrollbar {
             background-color: transparent;
             height: 8px;

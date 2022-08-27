@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Container} from './style';
 import Featured from "../../components/Featured";
+import Footer from '../../components/Footer'
 
 import {Link} from 'react-router-dom';
 
@@ -60,6 +61,8 @@ export default class Home extends Component{
                         ))}
                     </div>
                 </div>
+
+                <Footer/>
                 
             </Container>
         )

@@ -11,9 +11,9 @@ export default class Header extends Component {
                 <nav>
                     <ul>
                         <li><Link to='/'>Início</Link></li>
-                        <li><Link to='/filmes'>Filmes</Link></li>
+                        <li><Link to='/movies'>Filmes</Link></li>
                         <li><Link to='/series'>Séries</Link></li>
-                        <li><Link to='/favoritos'>Favoritos</Link></li>
+                        <li><Link to='/favorites'>Favoritos</Link></li>
                     </ul>
                 </nav>
             </Container>

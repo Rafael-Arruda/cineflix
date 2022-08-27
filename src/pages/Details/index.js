@@ -32,6 +32,15 @@ function Details() {
         loadMovie();
     }, [])
 
+    function saveMovie(){
+        let storage = localStorage.getItem('@cineflix');
+        let favorites = JSON.parse(storage) || [];
+        favorites.push(movie);
+
+        //salvando no localStorage
+        localStorage.setItem('@cineflix', JSON.stringify(favorites));
+    }
+
     return(
         <Container background={movie.backdrop_path}>
             <div className="background"></div>
@@ -62,7 +71,7 @@ function Details() {
                     <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${movie.title} Trailer`}>
                         <button>Trailer</button>
                     </a>
-                    <button>Salvar</button>
+                    <button onClick={() => saveMovie()}>Salvar</button>
                 </div>
             </div>
         </Container>
