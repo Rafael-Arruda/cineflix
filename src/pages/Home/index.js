@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import {Container} from './style';
 import Featured from "../../components/Featured";
 import Footer from '../../components/Footer'
@@ -7,15 +7,13 @@ import {Link} from 'react-router-dom';
 
 import api from '../../services/api';
 
-export default class Home extends Component{
+function Home(){
 
-    state = {
-        movies: [],
-        featuredData: null,
-    }
+    const [movies, setMovies] = useState([]);
+    const [featuredData, setFeaturedData] = useState(null);
 
-    componentDidMount() {
-        const loadAll = async () => {
+    useEffect(() => {
+        async function loadAll() {
             //Pegando a lista total
             const response = await api.get('/movie/now_playing', {
               params: {
@@ -29,42 +27,39 @@ export default class Home extends Component{
             let list = response.data.results;
             let randomChosenIndex = Math.floor(Math.random() * (list.length))
             let movieChosen = list[randomChosenIndex]; //Filme aleatório
-            
-            this.setState({
-                movies: list,
-                featuredData: movieChosen,
-                loading: false,
-            })
+
+            setMovies(list);
+            setFeaturedData(movieChosen);
+
         }
 
         loadAll();
-    }
+    }, [])
 
 
+    return(
+        <Container>
+            
+            {featuredData && 
+                <Featured item={featuredData}/>
+            }
 
-    render(){
-        return(
-            <Container>
-                
-                {this.state.featuredData && 
-                    <Featured item={this.state.featuredData}/>
-                }
-
-                <div className="now-playing">
-                    <h3>Nos Cinemas</h3>
-                    <div className="movies-list">
-                        {this.state.movies.map((item) => (
-                            <Link to={`/details/${item.id}`} key={item.title}>
-                                <img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`} alt={item.title}/>
-                                <h5>{item.title}</h5>
-                            </Link>
-                        ))}
-                    </div>
+            <div className="now-playing">
+                <h3>Lançados recentemente</h3>
+                <div className="movies-list">
+                    {movies.map((item) => (
+                        <Link to={`/details/${item.id}`} key={item.title}>
+                            <img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`} alt={item.title}/>
+                            <h5>{item.title}</h5>
+                        </Link>
+                    ))}
                 </div>
+            </div>
 
-                <Footer/>
-                
-            </Container>
-        )
-    }
+            <Footer/>
+            
+        </Container>
+    )
 }
+
+export default Home;
