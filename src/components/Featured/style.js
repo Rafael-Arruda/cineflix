@@ -19,7 +19,7 @@ export const Container = styled.div`
         height: inherit;
         padding: 50px 5%;
         color: #fff;
-        background: linear-gradient(to right, #1a242f 20%, transparent 80%);
+        background: linear-gradient(to right, #1a242f 30%, transparent 70%);
         position: relative;
         display: flex;
         flex-direction: column;

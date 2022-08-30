@@ -1,11 +1,10 @@
-import React, {useState, useEffect}  from 'react';
-import {Container} from './style'
+import React from "react";
 
-function Movies(){
+function Movies() {
     return(
-        <Container>
-            <h1>Filmes</h1>
-        </Container>
+        <div>
+            <h2>Movies</h2>
+        </div>
     )
 }
 

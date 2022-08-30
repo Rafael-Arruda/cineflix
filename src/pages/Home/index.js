@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Container} from './style';
 import Featured from "../../components/Featured";
+import ListRow from '../../components/ListRow';
 import Footer from '../../components/Footer'
 
 import {Link} from 'react-router-dom';
@@ -44,17 +45,7 @@ function Home(){
                 <Featured item={featuredData}/>
             }
 
-            <div className="now-playing">
-                <h3>Lançados recentemente</h3>
-                <div className="movies-list">
-                    {movies.map((item) => (
-                        <Link to={`/details/${item.id}`} key={item.title}>
-                            <img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`} alt={item.title}/>
-                            <h5>{item.title}</h5>
-                        </Link>
-                    ))}
-                </div>
-            </div>
+            <ListRow title='Lançados recentemente' list={movies}/>
 
             <Footer/>
             
