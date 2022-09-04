@@ -10,6 +10,7 @@ export default createGlobalStyle`
     html, body, #root {
         height: 100%;
         font-family: 'Roboto', sans-serif;
+        background-color: rgb(26,36,47);
     }
 
     ul {
