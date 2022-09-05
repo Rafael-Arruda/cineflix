@@ -42,10 +42,10 @@ function Home(){
         <Container>
             
             {featuredData && 
-                <Featured item={featuredData}/>
+                <Featured type='movie' item={featuredData}/>
             }
 
-            <ListRow title='Lançados recentemente' list={movies}/>
+            <ListRow type='movie' title='Lançados recentemente' list={movies}/>
 
             <Footer/>
             

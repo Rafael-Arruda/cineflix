@@ -5,7 +5,7 @@ import {Container} from './style';
 import Featured from "../../components/Featured";
 import ListRow from '../../components/ListRow';
 import Footer from '../../components/Footer';
-import TmdbMovies from "../../TmdbMovies";
+import TmdbMovies from "../../Tmdb/TmdbMovies";
 
 function Movies() {
 
@@ -15,7 +15,7 @@ function Movies() {
     useEffect(() => {
         const loadAll = async () => {
             //Pegando a lista total
-            let list = await TmdbMovies.getHomeList();
+            let list = await TmdbMovies.getMoviesList();
             setMovieList(list);
 
             //Pegando o Featured
@@ -33,11 +33,11 @@ function Movies() {
         <Container>
 
             {featuredData && 
-                <Featured item={featuredData}/>
+                <Featured type='movie' item={featuredData}/>
             }
             
             {movieList.map((list) => (
-                <ListRow key={list.slug} title={list.title} list={list.items}/>
+                <ListRow key={list.slug} type='movie' title={list.title} list={list.items}/>
             ))}
 
             <Footer/>

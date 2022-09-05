@@ -1,4 +1,4 @@
-import api from './services/api';
+import api from '../services/api';
 
 // const API_KEY = 'dc8d1f407a1bd3c7756a115230fc20e7';
 // const API_BASE = 'https://api.themoviedb.org/3';
@@ -15,7 +15,7 @@ const basicFetch = async (endpoint) => {
 }
 
 export default {
-    getHomeList: async () => {
+    getMoviesList: async () => {
         return [
             {
                 slug: 'nowplaying',
@@ -26,6 +26,11 @@ export default {
                 slug: 'toprated',
                 title: 'Em Alta',
                 items: await basicFetch(`/movie/top_rated`)
+            },
+            {
+                slug: 'trending',
+                title: 'Recomendados para você',
+                items: await basicFetch(`/trending/movie/week`)
             },
             {
                 slug: 'action',
@@ -53,5 +58,6 @@ export default {
                 items: await basicFetch(`/discover/movie?with_genres=27`)
             },
         ];
-    }
+    },
 }
+

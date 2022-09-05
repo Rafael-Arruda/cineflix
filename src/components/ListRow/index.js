@@ -4,7 +4,7 @@ import { Container } from "./style";
 
 import {MdNavigateBefore, MdNavigateNext} from 'react-icons/md';
 
-export default function ListRow({title, list}) {
+export default function ListRow({type, title, list}) {
     const [scrollX, setScrollX] = useState(0);
 
     const handleLeftArrow = () => {
@@ -42,7 +42,7 @@ export default function ListRow({title, list}) {
                 {list.map((item) => (
                     <Link to={`/details/${item.id}`} key={item.id}>
                         <img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`} alt={item.title}/>
-                        <h5>{item.title}</h5>
+                        <h5>{type === 'movie' ? item.title : item.name}</h5>
                     </Link>   
                 ))}
             </div>
