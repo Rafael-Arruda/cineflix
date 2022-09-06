@@ -7,71 +7,71 @@ import api from '../../services/api';
 import {Container} from './style'
 
 function Details() {
-    const {id} = useParams();
+    const {type, id} = useParams();
 
-    const [movie, setMovie] = useState({});
+    const [video, setVideo] = useState({}); //video pode ser filmes ou series
 
-    let firstDate = new Date(movie.release_date);
+    let firstDate = new Date(type === 'movie'? video.release_date : video.first_air_date);
     let genres = [];
-    for(let i in movie.genres) {
-        genres.push(movie.genres[i].name);
+    for(let i in video.genres) {
+        genres.push(video.genres[i].name);
     }
 
     useEffect(() => {
         async function loadMovie(){
-            const response = await api.get(`/movie/${id}`, {
+            const response = await api.get(type === 'movie'? `/movie/${id}` : `/tv/${id}`, {
                 params: {
                   api_key: 'dc8d1f407a1bd3c7756a115230fc20e7',
                   language: 'pt-BR',
                 }
             })
-            setMovie(response.data);
+            setVideo(response.data);
             console.log(response.data)
         }
 
         loadMovie();
     }, [])
 
-    function saveMovie(){
+    function saveVideo(){
         let storage = localStorage.getItem('@cineflix');
         let favorites = JSON.parse(storage) || [];
-        favorites.push(movie);
+        favorites.push(video);
 
         //salvando no localStorage
         localStorage.setItem('@cineflix', JSON.stringify(favorites));
     }
 
     return(
-        <Container background={movie.backdrop_path}>
+        <Container background={video.backdrop_path}>
             <div className="background"></div>
             <div className="box-details">
-                <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={movie.title}/>
-                <div className="movie-info">
-                    <div className="movie-title">
-                        <h2>{movie.title}</h2>
+                <img src={`https://image.tmdb.org/t/p/w300/${video.poster_path}`} alt={type === 'movie'? video.title : video.name}/>
+                <div className="video-info">
+                    <div className="video-title">
+                        <h2>{type === 'movie'? video.title : video.name}</h2>
                         <span>({firstDate.getFullYear()})</span>
                     </div>
-                    <div className="movie-tagline">
-                        <p>{movie.tagline}</p>
+                    <div className="video-tagline">
+                        <p>{video.tagline}</p>
                     </div>
-                    <div className="movie-overview">
+                    <div className="video-overview">
                         <h3>Sinopse</h3>
-                        <p>{movie.overview}</p>
+                        <p>{video.overview}</p>
                     </div>
-                    <div className="movie-genres">
+                    <div className="video-genres">
                         <h3>Gêneros</h3>
                         <p>{genres.join(', ')}</p>
                     </div>
-                    <div className="movie-points">
+                    <div className="video-points">
                         <h3>Pontos</h3>
-                        <p>{parseFloat(movie.vote_average).toFixed(1)} / 10</p>
+                        <p>{parseFloat(video.vote_average).toFixed(1)} / 10</p>
                     </div>
                 </div>
-                <div className="movie-buttons">
-                    <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${movie.title} Trailer`}>
+                <div className="video-buttons">
+                    <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${type === 'movie'? video.title : video.name} Trailer`}>
                         <button>Trailer</button>
                     </a>
-                    <button onClick={() => saveMovie()}>Salvar</button>
+                    <button onClick={() => saveVideo()}>Salvar</button>
                 </div>
             </div>
         </Container>

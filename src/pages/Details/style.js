@@ -27,7 +27,7 @@ export const Container = styled.div`
         display: flex;
         justify-content: space-evenly;
 
-        .movie-info {
+        .video-info {
             width: 50%;
             display: flex;
             flex-direction: column;
@@ -40,7 +40,7 @@ export const Container = styled.div`
             }
         }
 
-        .movie-title {
+        .video-title {
             font-size: 1.4em;
             display: flex;
             align-items: center;
@@ -51,13 +51,13 @@ export const Container = styled.div`
             }
         }
 
-        .movie-tagline {
+        .video-tagline {
             p {
                 font-style: italic;
             }
         }
 
-        .movie-buttons {
+        .video-buttons {
             position: absolute;
             bottom: 0;
             right: 0;

@@ -22,7 +22,7 @@ export default class RoutesApp extends Component{
                     <Route path='/movies' element={<Movies/>}/>
                     <Route path='/series' element={<Series/>}/>
                     <Route path='/favorites' element={<Favorites/>}/>
-                    <Route path='/details/:id' element={<Details/>}/>
+                    <Route path='/details/:type/:id' element={<Details/>}/>
                 </Routes>
             </BrowserRouter>
         )

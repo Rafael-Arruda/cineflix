@@ -18,7 +18,7 @@ function Featured({type, item}) {
                     <div className="featured--description">
                         <p>{item.overview}</p>
                     </div>
-                    <Link to={`/details/${item.id}`}>Saiba mais</Link>
+                    <Link to={`/details/${type}/${item.id}`}>Saiba mais</Link>
                     <input type="text" placeholder="Buscar por Filmes e Séries..."/>
                 </div>
             </div>

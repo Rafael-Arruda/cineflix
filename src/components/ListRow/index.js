@@ -40,7 +40,7 @@ export default function ListRow({type, title, list}) {
                 marginLeft: scrollX
             }}>
                 {list.map((item) => (
-                    <Link to={`/details/${item.id}`} key={item.id}>
+                    <Link to={`/details/${type}/${item.id}`} key={item.id}>
                         <img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`} alt={item.title}/>
                         <h5>{type === 'movie' ? item.title : item.name}</h5>
                     </Link>   
