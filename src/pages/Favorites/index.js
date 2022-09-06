@@ -23,13 +23,13 @@ function Favorites(){
             <div className="list">
                 {favorites.map((item) => {
                     
-                    const releaseDate = new Date(item.release_date);
+                    const releaseDate = new Date(item.type === 'movie'? item.video.release_date : item.video.first_air_date);
                     
                     return(
-                        <Link to={`/details/${item.id}`} className="box-card" key={item.id}>
-                            <img src={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`} alt={item.title}/>
+                        <Link to={`/details/${item.type}/${item.video.id}`} className="box-card" key={item.video.id}>
+                            <img src={`https://image.tmdb.org/t/p/w200/${item.video.backdrop_path}`} alt={item.title}/>
                             <div className="info-card">
-                                <h4>{item.title}</h4>
+                                <h4>{item.type === 'movie'? item.video.title : item.video.name}</h4>
                                 <p>{releaseDate.getFullYear()}</p>
                             </div>
                         </Link>

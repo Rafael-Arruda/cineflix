@@ -35,7 +35,10 @@ function Details() {
     function saveVideo(){
         let storage = localStorage.getItem('@cineflix');
         let favorites = JSON.parse(storage) || [];
-        favorites.push(video);
+        favorites.push({
+            type: type,
+            video: video
+        });
 
         //salvando no localStorage
         localStorage.setItem('@cineflix', JSON.stringify(favorites));
