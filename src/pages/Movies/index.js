@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import {Container} from './style';
 
+import Loader from '../../components/Loader';
 import Featured from "../../components/Featured";
 import ListRow from '../../components/ListRow';
 import Footer from '../../components/Footer';
@@ -11,6 +12,7 @@ function Movies() {
 
     const [movieList, setMovieList] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const loadAll = async () => {
@@ -24,25 +26,33 @@ function Movies() {
             let movieChosen = nowPlaying[0].items[randomChosenIndex];
             
             setFeaturedData(movieChosen);
+            setLoading(false);
         }
 
         loadAll();
     }, []);
 
     return(
-        <Container>
+        
+        <>
+            {loading? 
+                <Loader/>
+            :
+                <Container>
 
-            {featuredData && 
-                <Featured type='movie' item={featuredData}/>
+                    {featuredData && 
+                        <Featured type='movie' item={featuredData}/>
+                    }
+                    
+                    {movieList.map((list) => (
+                        <ListRow key={list.slug} type='movie' title={list.title} list={list.items}/>
+                    ))}
+
+                    <Footer/>
+
+                </Container>
             }
-            
-            {movieList.map((list) => (
-                <ListRow key={list.slug} type='movie' title={list.title} list={list.items}/>
-            ))}
-
-            <Footer/>
-
-        </Container>
+        </>
     )
 }
 

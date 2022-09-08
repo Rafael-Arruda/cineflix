@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 
 import api from '../../services/api';
 
+import Loader from '../../components/Loader';
 import {Container} from './style'
 
 function Details() {
     const {type, id} = useParams();
 
     const [video, setVideo] = useState({}); //video pode ser filmes ou series
+    const [loading, setLoading] = useState(true);
 
     let firstDate = new Date(type === 'movie'? video.release_date : video.first_air_date);
     let genres = [];
@@ -26,7 +28,7 @@ function Details() {
                 }
             })
             setVideo(response.data);
-            console.log(response.data)
+            setLoading(false);
         }
 
         loadMovie();
@@ -45,39 +47,47 @@ function Details() {
     }
 
     return(
-        <Container background={video.backdrop_path}>
-            <div className="background"></div>
-            <div className="box-details">
-                <img src={`https://image.tmdb.org/t/p/w300/${video.poster_path}`} alt={type === 'movie'? video.title : video.name}/>
-                <div className="video-info">
-                    <div className="video-title">
-                        <h2>{type === 'movie'? video.title : video.name}</h2>
-                        <span>({firstDate.getFullYear()})</span>
+        
+        <>
+            {loading? 
+                <Loader/>
+            :
+                <Container background={video.backdrop_path}>
+                    <div className="background"></div>
+                    <div className="box-details">
+                        <img src={`https://image.tmdb.org/t/p/w300/${video.poster_path}`} alt={type === 'movie'? video.title : video.name}/>
+                        <div className="video-info">
+                            <div className="video-title">
+                                <h2>{type === 'movie'? video.title : video.name}</h2>
+                                <span>({firstDate.getFullYear()})</span>
+                            </div>
+                            <div className="video-tagline">
+                                <p>{video.tagline}</p>
+                            </div>
+                            <div className="video-overview">
+                                <h3>Sinopse</h3>
+                                <p>{video.overview}</p>
+                            </div>
+                            <div className="video-genres">
+                                <h3>Gêneros</h3>
+                                <p>{genres.join(', ')}</p>
+                            </div>
+                            <div className="video-points">
+                                <h3>Pontos</h3>
+                                <p>{parseFloat(video.vote_average).toFixed(1)} / 10</p>
+                            </div>
+                        </div>
+                        <div className="video-buttons">
+                            <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${type === 'movie'? video.title : video.name} Trailer`}>
+                                <button>Trailer</button>
+                            </a>
+                            <button onClick={() => saveVideo()}>Salvar</button>
+                        </div>
                     </div>
-                    <div className="video-tagline">
-                        <p>{video.tagline}</p>
-                    </div>
-                    <div className="video-overview">
-                        <h3>Sinopse</h3>
-                        <p>{video.overview}</p>
-                    </div>
-                    <div className="video-genres">
-                        <h3>Gêneros</h3>
-                        <p>{genres.join(', ')}</p>
-                    </div>
-                    <div className="video-points">
-                        <h3>Pontos</h3>
-                        <p>{parseFloat(video.vote_average).toFixed(1)} / 10</p>
-                    </div>
-                </div>
-                <div className="video-buttons">
-                    <a target="blank" rel="external" href={`https://youtube.com/results?search_query=${type === 'movie'? video.title : video.name} Trailer`}>
-                        <button>Trailer</button>
-                    </a>
-                    <button onClick={() => saveVideo()}>Salvar</button>
-                </div>
-            </div>
-        </Container>
+                </Container>
+            
+            }
+        </>
     )
 }
 

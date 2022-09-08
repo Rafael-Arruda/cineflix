@@ -3,11 +3,13 @@ import {Container} from './style';
 
 import {MdClose} from 'react-icons/md'
 
+import Loader from '../../components/Loader';
 import {Link} from 'react-router-dom';
 
 function Favorites(){
 
     const [favorites, setFavorites] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         function getFavorites(){
@@ -15,6 +17,7 @@ function Favorites(){
             const list = JSON.parse(storage) || [];
 
             setFavorites(list);
+            setLoading(false);
         }
 
         getFavorites();
@@ -28,29 +31,35 @@ function Favorites(){
     }
 
     return(
-        <Container>
-            <div className="list">
-                {favorites.map((item) => {
-                    
-                    const releaseDate = new Date(item.type === 'movie'? item.video.release_date : item.video.first_air_date);
-                    
-                    return(
-                        <div key={item.video.id} className="box-card">
-                            <Link title='Ver detalhes' to={`/details/${item.type}/${item.video.id}`}>
-                                <img src={`https://image.tmdb.org/t/p/w200/${item.video.backdrop_path}`} alt={item.title}/>
-                                <div className="info-card">
-                                    <h4>{item.type === 'movie'? item.video.title : item.video.name}</h4>
-                                    <p>{releaseDate.getFullYear()}</p>
+        <>
+            {loading? 
+                <Loader/>
+            :
+                <Container>
+                    <div className="list">
+                        {favorites.map((item) => {
+                            
+                            const releaseDate = new Date(item.type === 'movie'? item.video.release_date : item.video.first_air_date);
+                            
+                            return(
+                                <div key={item.video.id} className="box-card">
+                                    <Link title='Ver detalhes' to={`/details/${item.type}/${item.video.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w200/${item.video.backdrop_path}`} alt={item.title}/>
+                                        <div className="info-card">
+                                            <h4>{item.type === 'movie'? item.video.title : item.video.name}</h4>
+                                            <p>{releaseDate.getFullYear()}</p>
+                                        </div>
+                                    </Link>
+
+                                    <MdClose onClick={() => deleteVideo(item.video.id)} title="Remover da lista" size={20}/>
                                 </div>
-                            </Link>
+                            )
+                        })}
+                    </div>  
 
-                            <MdClose onClick={() => deleteVideo(item.video.id)} title="Remover da lista" size={20}/>
-                        </div>
-                    )
-                })}
-            </div>  
-
-        </Container>
+                </Container>    
+            }
+        </>
     )
 }
 
