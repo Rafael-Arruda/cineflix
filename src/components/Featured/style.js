@@ -11,7 +11,7 @@ export const Container = styled.div`
     .featured--vertical {
         width: inherit;
         height: inherit;
-        background: linear-gradient(to top, #1a242f 10%, transparent 90%);
+        background: linear-gradient(to top, #1a242f 0%, transparent 100%);
     }
 
     .featured--horizontal {
@@ -35,10 +35,17 @@ export const Container = styled.div`
         .featured--description {
             p {
                 width: 40%;
-                max-height: 150px;
+                max-height: 110px;
                 min-width: 250px;
                 overflow-y: hidden;
                 line-height: 20px;
+            }
+        }
+        .featured--genres {
+            color: #ddd;
+
+            span {
+                margin-right: 5px;
             }
         }
         

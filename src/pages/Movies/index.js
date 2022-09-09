@@ -7,6 +7,7 @@ import Featured from "../../components/Featured";
 import ListRow from '../../components/ListRow';
 import Footer from '../../components/Footer';
 import TmdbMovies from "../../Tmdb/TmdbMovies";
+import api from "../../services/api";
 
 function Movies() {
 
@@ -25,7 +26,15 @@ function Movies() {
             let randomChosenIndex = Math.floor(Math.random() * (nowPlaying[0].items.length));
             let movieChosen = nowPlaying[0].items[randomChosenIndex];
             
-            setFeaturedData(movieChosen);
+            let movieChosenInfo = await api.get(`/movie/${movieChosen.id}`, {
+                params: {
+                    api_key: 'dc8d1f407a1bd3c7756a115230fc20e7',
+                    language: 'pt-BR',
+                    page: 1
+                }
+            })
+
+            setFeaturedData(movieChosenInfo.data);
             setLoading(false);
         }
 

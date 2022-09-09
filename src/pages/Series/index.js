@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import {Container} from './style';
 
+import api from "../../services/api";
+
 import Featured from "../../components/Featured";
 import ListRow from '../../components/ListRow';
 import Footer from "../../components/Footer";
@@ -25,7 +27,15 @@ function Series(){
             let randomChosenIndex = Math.floor(Math.random() * (popular[0].items.length));
             let seriesChosen = popular[0].items[randomChosenIndex];
 
-            setFeaturedData(seriesChosen);
+            let seriesChosenInfo = await api.get(`/tv/${seriesChosen.id}`, {
+                params: {
+                    api_key: 'dc8d1f407a1bd3c7756a115230fc20e7',
+                    language: 'pt-BR',
+                    page: 1
+                }
+            })
+
+            setFeaturedData(seriesChosenInfo.data);
             setLoading(false);
         }
 
