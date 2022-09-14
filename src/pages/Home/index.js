@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {Container} from './style';
-import Featured from "../../components/Featured";
+import Featured from '../../components/Featured';
+import Footer from '../../components/Footer';
 import ListRow from '../../components/ListRow';
-import Footer from '../../components/Footer'
-
-import {Link} from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -29,8 +27,16 @@ function Home(){
             let randomChosenIndex = Math.floor(Math.random() * (list.length))
             let movieChosen = list[randomChosenIndex]; //Filme aleatório
 
+            let movieChosenInfo = await api.get(`/movie/${movieChosen.id}`, {
+                params: {
+                    api_key: 'dc8d1f407a1bd3c7756a115230fc20e7',
+                    language: 'pt-BR',
+                    page: 1
+                }
+            })
+
             setMovies(list);
-            setFeaturedData(movieChosen);
+            setFeaturedData(movieChosenInfo.data);
 
         }
 
@@ -48,7 +54,7 @@ function Home(){
             <ListRow type='movie' title='Lançados recentemente' list={movies}/>
 
             <Footer/>
-            
+    
         </Container>
     )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from 'react-router-dom';
 import {Container} from './style';
 
@@ -9,6 +9,8 @@ function Featured({type, item}) {
     for(let i in item.genres){
         genres.push(item.genres[i].name)
     }
+
+    const [search, setSearch] = useState('');
 
     return(
         <Container background={item.backdrop_path}>
@@ -32,7 +34,10 @@ function Featured({type, item}) {
                         {genres.join(', ')}
                     </div>
                     <Link to={`/details/${type}/${item.id}`}>Saiba mais</Link>
-                    <input type="text" placeholder="Buscar por Filmes e Séries..."/>
+                    <div className="featured--search">
+                        <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder={type === 'movie' ? 'Buscar por Filmes...' : 'Buscar por Séries...'}/>
+                        {search && <Link to={`/search/${type}/${search}`}>Buscar</Link>}
+                    </div>
                 </div>
             </div>
         </Container>

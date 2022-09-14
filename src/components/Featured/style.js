@@ -11,7 +11,7 @@ export const Container = styled.div`
     .featured--vertical {
         width: inherit;
         height: inherit;
-        background: linear-gradient(to top, #1a242f 0%, transparent 100%);
+        background: linear-gradient(to top, #1a242f 10%, transparent 90%);
     }
 
     .featured--horizontal {
@@ -62,15 +62,33 @@ export const Container = styled.div`
             cursor: pointer;
         }
 
-        input {
+        .featured--search {
             width: 90%;
-            padding: 15px 20px;
             border-radius: 25px;
-            border: none;
-            font-size: 1.2rem;
-            outline: none;
+            overflow: hidden;
             position: absolute;
             bottom: 8%;
+
+            input {
+                width: 100%;
+                padding: 15px 20px;
+                border: none;
+                font-size: 1.1rem;
+                outline: none;
+            }
+
+            a {
+                width: 120px;
+                position: absolute;
+                right: 0;
+                border: none;
+                font-size: 1rem;
+                font-weight: 400;
+                padding: 16px;
+                cursor: pointer;
+                color: #fff;
+                background-color: #0f79af;
+            }
         }
     }
 
