@@ -21,17 +21,52 @@ export const Container = styled.div`
     nav {
         width: 50%;
         margin-right: 5%;
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .mobile-icon {
+                display: none;
+            }
+
+            a {
+                color: #dde0e3;
+                letter-spacing: 1px;
+                font-size: 1em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     }
 
-    ul {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    @media screen and (max-width: 700px){
+        justify-content: center;
 
-        a {
-            color: #dde0e3;
-            letter-spacing: 1px;
-            font-size: 1em;
+        nav {
+            background-color: #000;
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            z-index: 999;
+
+            ul {
+                .mobile-icon {
+                    display: flex;
+                }
+
+                a {
+                    font-size: 0.7em;
+                    transition: 0.2s all;
+                }
+                a:hover {
+                    color: #0F79AF;
+                }
+            }
         }
     }
 `;
