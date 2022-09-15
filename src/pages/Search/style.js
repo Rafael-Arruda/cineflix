@@ -3,6 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100%;
 
+    .without-results {
+        margin: 60px;
+        text-align: center;
+
+        h2 {
+            font-weight: 500;
+            color: #fff;
+        }
+    }
+
     .box-card {
         padding: 10px 15px;
 
@@ -36,7 +46,7 @@ export const Container = styled.div`
 
         p {
             font-size: 0.8em;
-            max-height: 70px;
+            /* max-height: 70px; */
             overflow: hidden;
         }
     }

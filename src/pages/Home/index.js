@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {Container} from './style';
-import Featured from '../../components/Featured';
-import Footer from '../../components/Footer';
-import ListRow from '../../components/ListRow';
+import FeaturedHome from '../../components/FeaturedHome';
+
+import Loader from '../../components/Loader';
 
 import api from '../../services/api';
 
@@ -10,6 +10,7 @@ function Home(){
 
     const [movies, setMovies] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function loadAll() {
@@ -37,6 +38,7 @@ function Home(){
 
             setMovies(list);
             setFeaturedData(movieChosenInfo.data);
+            setLoading(false);
 
         }
 
@@ -45,17 +47,20 @@ function Home(){
 
 
     return(
-        <Container>
-            
-            {featuredData && 
-                <Featured type='movie' item={featuredData}/>
+
+        <>
+            {loading?
+                <Loader/>
+            :
+                <Container>
+                
+                    {featuredData && 
+                        <FeaturedHome type='movie' item={featuredData}/>
+                    }
+        
+                </Container>
             }
-
-            <ListRow type='movie' title='Lançados recentemente' list={movies}/>
-
-            <Footer/>
-    
-        </Container>
+        </>
     )
 }
 

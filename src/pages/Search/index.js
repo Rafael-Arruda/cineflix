@@ -61,27 +61,33 @@ export default function Search() {
                 <Loader/>
             :
                 <Container>
-                    <div className="list">
-                        {list.map((item, index) => {
-                            
-                            const releaseDate = new Date(type === 'movie'? item.release_date : item.first_air_date);
-                            
-                            return(
-                                <div key={index} className="box-card">
-                                    <Link title='Ver detalhes' to={`/details/${type}/${item.id}`}>
-                                        <img src={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`} alt={item.title}/>
-                                        <div className="info-card">
-                                            <div>
-                                                <h4>{type === 'movie'? item.title : item.name}</h4>
-                                                <span>{releaseDate.getFullYear()}</span>
+                    {list.length === 0?
+                        <div className="without-results">
+                            <h2>Sem resultados para a busca :(</h2>
+                        </div>
+                    :
+                        <div className="list">
+                            {list.map((item, index) => {
+                                
+                                const releaseDate = new Date(type === 'movie'? item.release_date : item.first_air_date);
+                                
+                                return(
+                                    <div key={index} className="box-card">
+                                        <Link title='Ver detalhes' to={`/details/${type}/${item.id}`}>
+                                            <img src={`https://image.tmdb.org/t/p/w200/${item.backdrop_path}`} alt={item.title}/>
+                                            <div className="info-card">
+                                                <div>
+                                                    <h4>{type === 'movie'? item.title : item.name}</h4>
+                                                    <span>{releaseDate.getFullYear()}</span>
+                                                </div>
+                                                <p>{item.overview}</p>
                                             </div>
-                                            <p>{item.overview}</p>
-                                        </div>
-                                    </Link>
-                                </div>
-                            )
-                        })}
-                    </div>  
+                                        </Link>
+                                    </div>
+                                )
+                            })}
+                        </div>     
+                    }
 
                 </Container> 
             }
