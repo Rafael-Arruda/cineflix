@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
+    padding: 2vh 0;
 
     .without-results {
         margin: 60px;
@@ -46,8 +47,30 @@ export const Container = styled.div`
 
         p {
             font-size: 0.8em;
-            /* max-height: 70px; */
+            max-height: 40px;
             overflow: hidden;
+        }
+    }
+
+    @media screen and (max-width: 600px){
+        padding-bottom: 12vh;
+
+        img {
+            width: 150px;
+        }
+
+        .info-card {
+            h4 {
+                font-size: 0.8em;
+            }
+
+            span {
+                font-size: 0.6em;
+            }
+
+            p {
+                font-size: 0.7em;
+            }
         }
     }
 `;

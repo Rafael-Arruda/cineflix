@@ -19,4 +19,8 @@ export const Container = styled.div`
         color: #fff;
         text-decoration: underline;
     }
+
+    @media screen and (max-width: 700px){
+        display: none;
+    }
 `;

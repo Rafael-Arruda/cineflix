@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
+    padding: 2vh 0;
 
     .box-card {
         padding: 10px 15px;
@@ -42,6 +43,14 @@ export const Container = styled.div`
 
         p {
             font-size: 0.7em;
+        }
+    }
+
+    @media screen and (max-width: 700px){
+        padding-bottom: 12vh;
+
+        img {
+            width: 180px;
         }
     }
 `;
