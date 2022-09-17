@@ -13,6 +13,10 @@ export default createGlobalStyle`
         background-color: rgb(26,36,47);
     }
 
+    .app {
+        padding-top: 10vh;
+    }
+
     ul {
         list-style: none;
     }

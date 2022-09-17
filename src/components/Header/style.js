@@ -7,6 +7,11 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 
     h2 {
         font-size: 1.3em;
