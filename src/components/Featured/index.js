@@ -36,7 +36,7 @@ function Featured({type, item}) {
                     <Link to={`/details/${type}/${item.id}`}>Saiba mais</Link>
                     <div className="featured--search">
                         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder={type === 'movie' ? 'Buscar por Filmes...' : 'Buscar por Séries...'}/>
-                        {search && <Link to={`/search/${type}/${search}`}>Buscar</Link>}
+                        {search && <Link to={`/result/${type}/${search}`}>Buscar</Link>}
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ import Movies from './pages/Movies';
 import Series from './pages/Series';
 import Favorites from './pages/Favorites';
 import Details from './pages/Details';
+import Result from './pages/Result';
 import Search from './pages/Search';
 
 export default class RoutesApp extends Component{
@@ -24,7 +25,8 @@ export default class RoutesApp extends Component{
                     <Route path='/series' element={<Series/>}/>
                     <Route path='/favorites' element={<Favorites/>}/>
                     <Route path='/details/:type/:id' element={<Details/>}/>
-                    <Route path='/search/:type/:title' element={<Search/>}/>
+                    <Route path='/result/:type/:title' element={<Result/>}/>
+                    <Route path='/search' element={<Search/>}/>
                 </Routes>
             </BrowserRouter>
         )

@@ -2,75 +2,56 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    padding: 2vh 0;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 
-    .without-results {
-        margin: 60px;
-        text-align: center;
-
-        h2 {
-            font-weight: 500;
-            color: #fff;
-        }
-    }
-
-    .box-card {
-        padding: 10px 15px;
-
-        :not(:first-child) {
-            border-top: 2px solid #ddd;
+    .box-search {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 2px;
+            outline: none;
         }
 
         a {
-            display: flex;
-        }
+            text-align: center;
+            width: 70px;
+            position: absolute;
+            right: 0;
+            font-size: 1rem;
+            border: none;
+            padding: 10px 5px;
+            color: #fff;
+            background-color: #0f79af;
+        }   
     }
 
-    .info-card {
-        padding: 0px 5px;
-        color: #fff;
+    .box-options {
+        width: 100%;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
-
-        h4 {
-            font-weight: 500;
-            transition: 0.2s all;
-        }
-        h4:hover {
-            color: #0f79af;
-        }
-
-        span {
-            font-size: 0.7em;
-        }
-
-        p {
-            font-size: 0.8em;
-            max-height: 40px;
-            overflow: hidden;
-        }
+        align-items: center;
+        gap: 10px;
     }
 
-    @media screen and (max-width: 600px){
-        padding-bottom: 12vh;
-
-        img {
-            width: 150px;
-        }
-
-        .info-card {
-            h4 {
-                font-size: 0.8em;
-            }
-
-            span {
-                font-size: 0.6em;
-            }
-
-            p {
-                font-size: 0.7em;
-            }
-        }
+    .option-movie, .option-series {
+        background-color: #3F4655;
+        color: #fff;
+        width: 50%;
+        height: 10vh;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
     }
+
 `;

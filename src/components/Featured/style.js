@@ -92,4 +92,16 @@ export const Container = styled.div`
         }
     }
 
+    @media screen and (max-width: 700px){
+
+        .featured--horizontal {
+            justify-content: center;
+
+            .featured--search {
+                display: none;
+            }
+        }
+
+    }
+
 `;

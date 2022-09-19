@@ -32,6 +32,10 @@ export const Container = styled.div`
             align-items: center;
             justify-content: space-between;
 
+            .mobile-search {
+                display: none;
+            }
+
             .mobile-icon {
                 display: none;
             }
@@ -60,6 +64,10 @@ export const Container = styled.div`
             z-index: 999;
 
             ul {
+                .mobile-search {
+                    display: flex;
+                }
+
                 .mobile-icon {
                     display: flex;
                 }
