@@ -27,7 +27,7 @@ export const Container = styled.div`
         gap: 10px;
 
         .featured--name {
-            font-size: 4.2em;
+            font-size: 4rem;
         }
         
         a {
@@ -44,6 +44,14 @@ export const Container = styled.div`
         }
 
         
+    }
+
+    @media screen and (max-width: 700px){
+        .featured--horizontal {
+            .featured--name {
+                font-size: 3rem;
+            }
+        }
     }
 
 `;
