@@ -53,7 +53,6 @@ function Details() {
                 <Loader/>
             :
                 <Container background={video.backdrop_path}>
-                    <div className="background"></div>
                     <div className="box-details">
                         <img src={`https://image.tmdb.org/t/p/w300/${video.poster_path}`} alt={type === 'movie'? video.title : video.name}/>
                         <div className="video-info">
